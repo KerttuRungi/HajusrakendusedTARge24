@@ -45,5 +45,18 @@ app.delete('/things/:id', (req, res) => {
     res.status(204).send({error: "No content"})
 })
 
+//completely update thing
+app.put('/things/:id', (req, res) => {
+    if (typeof things[req.params.id - 1] === 'undefined')
+    {
+        return res.status(404).send({error: "Object not found. Check your id"})
+    }
+    things[req.params.id - 1].name = req.body.name;
+    things[req.params.id - 1].price = req.body.price;
+
+    
+    res.send(things[req.params.id - 1]);
+})
+
 app.listen(8080, () => {console.log('API is running at http://localhost:8080')})
     
