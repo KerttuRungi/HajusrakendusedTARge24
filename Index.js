@@ -10,6 +10,26 @@ const things = [
     { id: 2, name: 'furby', price: 666 },
     { id: 3, name: 'portal gun', price: 2000 },
 ]
+//new array for car display
+const displayCars = [{
+    Car:{
+        CarBrand: "BMW",
+        color: "pink",
+        "Tinted windows": true
+    }
+}]
+
+//method to get car display
+document.getElementById("app").innerHTML =
+`
+<div id="json">
+    <h1>Car properties</h1>
+    <p>Brand of car: ${displayCars[0].Car.CarBrand}</p>
+    <p>Color of car: ${displayCars[0].Car.color}</p>
+    <p>Tinted windows: ${displayCars[0].Car["Tinted windows"]}</p>
+</div>
+`
+;
 
 app.get('/things', (req, res) => {res.send(things)})
 
